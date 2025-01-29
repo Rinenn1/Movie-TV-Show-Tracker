@@ -28,7 +28,8 @@ function MyFavorites() {
       {movies.map((movie) => 
         <div key={movie.id}>
           <h3>{movie.id}</h3>
-          
+          <button onClick={() => toggleFavorite(movie.title)}>
+          </button>
         </div>
         )};
   )
