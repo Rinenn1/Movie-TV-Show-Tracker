@@ -1,4 +1,6 @@
-
+import React from "react"
+import App from "./App.jsx"
+import { NavLink } from "react-router-dom"
 
 function Navbar() {
   return (
@@ -13,4 +15,4 @@ function Navbar() {
   )
 }
 
-export default Navbar
+export default Navbar;
