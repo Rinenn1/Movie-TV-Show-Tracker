@@ -1,3 +1,6 @@
+import React, {useState} from "react";
+
+
 function MyFavorites() {
   return (
     <div>
@@ -6,4 +9,4 @@ function MyFavorites() {
   )
 }
 
-export default MyFavorites
+export default MyFavorites;
