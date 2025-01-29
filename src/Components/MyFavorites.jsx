@@ -21,7 +21,16 @@ function MyFavorites() {
   return (
     <div>
         <h1>My Favorites</h1>
+
+        {/* Movie list */}
+
     </div>
+      {movies.map((movie) => 
+        <div key={movie.id}>
+          <h3>{movie.id}</h3>
+          
+        </div>
+        )};
   )
 }
 
