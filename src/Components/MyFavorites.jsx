@@ -13,9 +13,9 @@ function MyFavorites() {
   };
 
   const movies = [
-    {id: 1, title:},
-    {id: 2, title:},
-    { id: 3, title:},
+    {id: 1, title: "Inception" },
+    {id: 2, title: "The Dark Knight" },
+    { id: 3, title: "Interstellar" },
   ];
 
   
