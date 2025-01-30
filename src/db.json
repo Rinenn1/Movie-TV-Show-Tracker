@@ -1,0 +1,59 @@
+{
+    "movies": [
+      {
+        "id": 1,
+        "title": "Inception",
+       "genre": "Sci-Fi",
+        "rating": 4.5,
+        "image": "inception.jpg",
+        "isFavorite": true,
+        "isInWatchlist": false
+      },
+      {
+        "id": 2,
+        "title": "The Dark Knight",
+        "genre": "Action",
+        "rating": 4.8,
+        "image": "dark_knight.jpg",
+        "isFavorite": false,
+        "isInWatchlist": true
+      },
+      {
+        "id": 3,
+        "title": "Interstellar",
+        "genre": "Sci-Fi",
+        "rating": 4.7,
+        "image": "interstellar.jpg",
+        "isFavorite": true,
+        "isInWatchlist": false
+      },
+      {
+        "id": 4,
+        "title": "The Matrix",
+        "genre": "Sci-Fi",
+        "rating": 4.6,
+        "image": "matrix.jpg",
+        "isFavorite": false,
+        "isInWatchlist": true
+      },
+      {
+        "id": 5,
+        "title": "Gladiator",
+        "genre": "Drama",
+        "rating": 4.3,
+        "image": "gladiator.jpg",
+        "isFavorite": true,
+        "isInWatchlist": false
+      },
+      {
+        "id": 6,
+        "title": "Titanic",
+        "genre": "Romance",
+        "rating": 4.4,
+        "image": "titanic.jpg",
+        "isFavorite": false,
+        "isInWatchlist": true
+      }
+    ]
+  }
+  
