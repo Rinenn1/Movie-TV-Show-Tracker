@@ -18,21 +18,32 @@ function MyFavorites() {
     { id: 3, title:},
   ];
 
+  
   return (
     <div>
-        <h1>My Favorites</h1>
+      <h1>My Favorites</h1>
 
-        {/* Movie list */}
+      {/* Movie list */}
+      <div>
+        {movies.map((movie) => (
+          <div key={movie.id}>
+            <h3>{movie.title}</h3>
+            <button onClick={() => toggleFavorite(movie.title)}>
+              {favorites.includes(movie.title) ? "Remove from Favorites" : "Add to Favorites"}
+            </button>
+          </div>
+        ))}
+      </div>
 
+      {/* Displaying favorite movies */}
+      <h2>Favorite Movies:</h2>
+      <ul>
+        {favorites.map((fav, index) => (
+          <li key={index}>{fav}</li>
+        ))}
+      </ul>
     </div>
-      {movies.map((movie) => 
-        <div key={movie.id}>
-          <h3>{movie.id}</h3>
-          <button onClick={() => toggleFavorite(movie.title)}>
-          </button>
-        </div>
-        )};
-  )
+  );
 }
 
 export default MyFavorites;
