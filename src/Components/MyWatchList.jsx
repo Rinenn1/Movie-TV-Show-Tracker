@@ -1,9 +1,9 @@
-function MyWatchList() {
+const Watchlist = () => {
   return (
     <div>
-        
+      
     </div>
-  )
-}
+  );
+};
 
-export default MyWatchList
+export default Watchlist;
