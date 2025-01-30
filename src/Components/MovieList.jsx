@@ -1,4 +1,4 @@
-function MovieList() {
+function MovieList({ movies, onAddToFavorites}) {
   return (
     <div>
         
