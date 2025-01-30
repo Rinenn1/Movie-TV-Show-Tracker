@@ -1,21 +1,27 @@
-import { useContext } from "react";
-import { AppContext } from "./App";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 
 export default function MovieDetail() {
 
-  const { movies } = useContext(AppContext);
-
   const { id } = useParams();
+  const [movie, setMovie] = useState(null);
 
-  const movie = movies.find((m) => m.id.toString() === id);
+  useEffect(() => {
+    fetch(`http://localhost:3000/movies/${id}`)
+    .then((res) => res.json())
+    .then(setMovie);
+  }, [id]);
+
+  if (!movie) {
+    return <p>Loading...</p>
+  }
 
   return (
     <div>
         <div className="display">
           <div>
-            <img src={movie.image} className="image"/>
+            <img src={movie.image} className="image" alt={movie.title}/>
           </div>
           <div>
             <p><strong>Type: </strong>{movie.type}</p>
