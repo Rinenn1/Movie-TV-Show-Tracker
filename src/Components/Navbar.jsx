@@ -7,6 +7,7 @@ function Navbar({ onSearch }) {
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = (e) => {
+
     e.preventDefault();
     onSearch(searchQuery);
   };
@@ -20,7 +21,7 @@ function Navbar({ onSearch }) {
     <div>
        <nav className="links">
           <div>
-            <NavLink to="/movies" className="nav-link">Movies</NavLink>
+            <NavLink to="/" className="nav-link">Movies</NavLink>
             <NavLink to="/watchlist" className="nav-link">Watchlist</NavLink>
             <NavLink to="/favorites" className="nav-link">Favorite ❤️</NavLink>
           </div>
