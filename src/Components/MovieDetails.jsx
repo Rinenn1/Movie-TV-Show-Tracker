@@ -1,12 +1,10 @@
-
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AppContext } from "./App";
 import './Movies.css';
 
-
-
 export default function MovieDetail() {
+
 
   const { movies } = useContext(AppContext);
 
@@ -15,13 +13,18 @@ export default function MovieDetail() {
   const movie = movies.find((m) => m.id.toString() === id);
 
 
+  useEffect(() => {
+    fetch(`http://localhost:3000/movies/${id}`)
+    .then((res) => res.json())
+    .then(setMovie);
+  }, [id]);
+
   if (!movie) {
     return <p>Loading...</p>
   }
 
   return (
     <div>
-
         <div className="display-details">
 
           <div>
@@ -29,9 +32,7 @@ export default function MovieDetail() {
           </div>
           <div>
             <p><strong>Type: </strong>{movie.type}</p>
-
             <p><strong>Genre: </strong>{movie.genre}</p>
-
             <p><strong>Duration: </strong>{movie.duration}</p>
             <p><strong>Rating: </strong>{movie.rating}</p>
           </div>
