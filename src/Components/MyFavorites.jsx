@@ -1,25 +1,29 @@
 import React, { useContext } from "react";
 import { AppContext } from "./App";
+import './Movies.css';
 
 function MyFavorites() {
   const { favorites, toggleFavorite } = useContext(AppContext);
 
   return (
-    <div>
-      <h2>Favorite Movies:</h2>
-      <ul>
+    <div className="favorites-container">
+      <h2 className="favorites-title">Favorite Movies:</h2>
+      <div className="favorites-grid">
         {favorites.map((fav) => (
-          <div key={fav.id}>
-            <img src={fav.image} className="image" alt={fav.title} />
-            <h4>Name: {fav.title}</h4>
-            <p>Genre: {fav.genre}</p>
-            <p>Rating: {fav.rating}</p>
-            <button onClick={() => toggleFavorite(fav)} className="btn">
-              Remove From Favorites
-            </button>
+          <div key={fav.id} className="favorite-card">
+            <img src={fav.image} alt={fav.title} className="favorite-image" />
+            <div className="favorite-info">
+              <h4 className="favorite-title">Name: {fav.title}</h4>
+              <p className="favorite-genre">Genre: {fav.genre}</p>
+              <p className="favorite-rating">Rating: {fav.rating}</p>
+              <button onClick={() => toggleFavorite(fav)} className="remove-btn">
+                Remove From Favorites
+              </button>
+            </div>
+            
           </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

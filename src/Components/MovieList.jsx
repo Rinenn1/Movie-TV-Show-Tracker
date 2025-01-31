@@ -35,7 +35,7 @@ function MovieList() {
       </div>
       <h1>Movies</h1>
       <div className="movies-display">
-      {filterMovies.map((movie) => (
+        {filterMovies.map((movie) => (
           <div key={movie.id} className="movieDisplay">
             <img src={movie.image} className="image"/> 
             <h2>{movie.title}</h2>
@@ -51,7 +51,7 @@ function MovieList() {
             } className="btn">
               {watchlist.some((m) => m.id === movie.id) ? "In Watchlist" : "Add to Watchlist"}
             </button>
-            <Link to={`/moviedetails/${movie.id}`}>View Details </Link>
+            <Link to={`/moviedetails/${movie.id}`} className="view-details-link">View Details </Link>
           </div>
         ))}
       </div>

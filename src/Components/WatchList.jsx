@@ -8,22 +8,25 @@ const Watchlist = () => {
   const { watchlist, removeFromWatchlist } = useContext(AppContext);
 
   return (
-    <div>
-      <h2>My Watchlist</h2>
+    <div className="watchlist-container">
+      <h2 className="watchlist-title">My Watchlist</h2>
       {watchlist.length === 0 ? (
-        <p>No movies in your watchlist yet.</p>
+        <p className="empty-watchlist">No movies in your watchlist yet.</p>
       ) : (
-        <div>
+        <div className="watchlist-grid">
           {watchlist.map((movie) => (
-            <div key={movie.id} className="movieDisplay">
-              <img src={movie.image} className="image"/>
-              <h2>{movie.title}</h2>
-              <p>{movie.genre}</p>
-              <p>Rating: {movie.rating}</p>
-              <button onClick={() => removeFromWatchlist(movie.id)} className="btn">
-                Remove from Watchlist
-              </button>
-              <Link to={`/moviedetails/${movie.id}`}>View Details </Link>
+            <div key={movie.id} className="watchlist-card">
+              <img src={movie.image} className="watchlist-image"/>
+              <div className="watchlist-info">
+                <h3 className="watchlist-movie-title">{movie.title}</h3>
+                <p className="watchlist-genre">{movie.genre}</p>
+                <p className="watchlist-rating">Rating: {movie.rating}/5</p>
+                <button onClick={() => removeFromWatchlist(movie.id)} className="remove-watchlist-btn">
+                  Remove from Watchlist
+                </button>
+                <Link to={`/moviedetails/${movie.id}`} className="view-details-link">View Details </Link>
+              </div>
+              
             </div>
           ))}
         </div>
