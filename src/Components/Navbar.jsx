@@ -16,8 +16,7 @@ function Navbar({ onSearch }) {
   };
 
   return (
-    <div>
-      <nav className="links">
+    <div className="links" >
         <div>
           <NavLink to="/" className="nav-link">Movies</NavLink>
           <NavLink to="/watchlist" className="nav-link">Watchlist</NavLink>
@@ -36,7 +35,6 @@ function Navbar({ onSearch }) {
             <button type="button" onClick={handleClearSearch} className="btn">Clear</button>
           </form>
         </div>
-      </nav>
     </div>
   );
 }

@@ -1,9 +1,6 @@
 import { createContext, useState, useEffect } from "react";
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
-import Hero from "./Hero";
 
 export const AppContext = createContext();
 
@@ -63,7 +60,7 @@ const filteredMovies = movies.filter((movie) =>
 
   return (
     <div>
-      <AppContext.Provider value={{movies: filteredMovies, movies, setMovies, watchlist, addToWatchlist, removeFromWatchlist, updateMovieStatus, favorites, setFavorites, toggleFavorite}}>
+      <AppContext.Provider value={{ movies, setMovies, watchlist, addToWatchlist, removeFromWatchlist, updateMovieStatus, favorites, setFavorites, toggleFavorite}}>
         <Navbar onSearch={handleSearch}/>
         <Outlet />
       </AppContext.Provider>

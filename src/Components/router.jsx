@@ -5,7 +5,6 @@ import MovieList from "./MovieList";
 import WatchList from "./WatchList";
 import ErrorPage from "./ErrorPage"; 
 import MyFavorites from "./MyFavorites";
-import Hero from "./Hero";
 
 export const router = createBrowserRouter([
   {
@@ -13,10 +12,9 @@ export const router = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
-      { path: "/", element: <Hero /> },
-      {path: '/movies', element: <MovieList />},
+      {path: '/', element: <MovieList />},
       {path: "/moviedetails/:id", element: <MovieDetail />, errorElement: <ErrorPage />},
-      { path: "/watchlist", element: <WatchList /> },
+      {path: "/watchlist", element: <WatchList /> },
       {path: '/favorites', element: <MyFavorites />}
     ],
   },
