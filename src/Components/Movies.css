@@ -102,11 +102,6 @@ a:hover {
     color: #0056b3;
 }
 
-.search {
-    padding: 10px;
-    border-radius: 10px;
-    margin-top: 10px;
-}
 
 .btn {
     color: #fff;
@@ -123,9 +118,18 @@ a:hover {
     background-color: #0056b3; 
 }
 
-.search input{
-    border-radius: 10px;
-    padding: 10px;
-    margin-left: 20px;
-    border-color: #000;
-}
+.search-bar {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin: 20px 0; 
+  }
+  
+  .search-bar input {
+    padding: 10px; 
+    border-radius: 10px; 
+    border: 1px solid #ccc; 
+    width: 80%; 
+    max-width: 500px; 
+    margin-left: 10px; /* Space between icon and input */
+  }

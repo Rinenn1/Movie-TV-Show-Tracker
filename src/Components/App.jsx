@@ -10,7 +10,6 @@ function App() {
   const [favorites, setFavorites] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
-
   useEffect(() => {
     fetch("http://localhost:3001/movies")
       .then((res) => res.json())
@@ -49,19 +48,14 @@ function App() {
     })
   };
 
-  const handleSearch = (e) => {
-    setSearchQuery(searchQuery);
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
   };
-
-// Filter movies based on the search query
-const filteredMovies = movies.filter((movie) =>
-    movie.title.toLowerCase().includes(searchQuery.toLowerCase())
-);
 
   return (
     <div>
-      <AppContext.Provider value={{ movies, setMovies, watchlist, addToWatchlist, removeFromWatchlist, updateMovieStatus, favorites, setFavorites, toggleFavorite}}>
-        <Navbar onSearch={handleSearch}/>
+      <AppContext.Provider value={{ movies, setMovies, watchlist, addToWatchlist, removeFromWatchlist, updateMovieStatus, favorites, setFavorites, toggleFavorite, searchQuery, handleSearchChange}}>
+        <Navbar/>
         <Outlet />
       </AppContext.Provider>
     </div>
