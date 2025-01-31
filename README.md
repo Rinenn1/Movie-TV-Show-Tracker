@@ -43,16 +43,14 @@ This is a React-based movie application that allows users to browse, search, and
    ```
 4. Start the development server:
    ```bash
-   npm start
+   npm run dev
    ```
 
-## Deployment
-This project is deployed using Netlify. Push your changes to GitHub, and Netlify will automatically deploy the latest version.
 
 ## Usage Instructions
 1. Open the application in your browser.
 2. Use the search bar to find specific movies by title.
-3. Click on a movie card to view detailed information.
+3. Click on a **View Details** link button to view detailed information.
 4. Add movies to your favorites list for quick access.
 5. Navigate between pages using the navbar.
 
