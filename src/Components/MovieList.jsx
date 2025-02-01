@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AppContext } from "./App";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import './MovieList.css';
 
 function MovieList() {
@@ -8,8 +10,8 @@ function MovieList() {
   const { movies, addToWatchlist, watchlist, favorites, toggleFavorite, searchQuery, handleSearchChange } = useContext(AppContext);
   
   const filterMovies = movies.filter(movie => 
-    movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    movie.genre.toLowerCase().includes(searchQuery.toLowerCase())
+    (movie.title?.toLowerCase() || "").includes((searchQuery || "").toLowerCase()) ||
+    (movie.genre?.toLowerCase() || "").includes((searchQuery || "").toLowerCase())
   );
   
   if (!movies.length) {
