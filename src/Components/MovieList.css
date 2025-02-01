@@ -1,0 +1,96 @@
+/* MovieList.css */
+
+h1 {
+    text-align: center;
+    font-size: 32px;
+    margin: 20px 0;
+    color: #f4c842;
+  }
+  
+  .movies-display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .movieDisplay {
+    background: #1e1e1e;
+    border-radius: 10px;
+    padding: 15px;
+    width: 250px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .movieDisplay:hover {
+    transform: scale(1.05);
+  }
+  
+  .image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  h2 {
+    font-size: 22px;
+    margin: 10px 0;
+  }
+  
+  p {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+  
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f4c842;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #d1a732;
+  }
+  
+  .btn:nth-of-type(2) {
+    background-color: #ff6347;
+    color: white;
+  }
+  
+  .btn:nth-of-type(2):hover {
+    background-color: #d1503f;
+  }
+  
+  a {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #f4c842;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  a:hover {
+    color: #d1a732;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .movies-display {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  

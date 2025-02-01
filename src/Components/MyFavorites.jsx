@@ -1,47 +1,29 @@
-import React, {useState} from "react";
-
+import React, { useContext } from "react";
+import { AppContext } from "./App";
+import './MyFavorites.css';
 
 function MyFavorites() {
-  const [favorites, setFavorites] = useState([]);
+  const { favorites, toggleFavorite } = useContext(AppContext);
 
-  const toggleFavorite = (movie) => {
-    if (favorites.includes(movie)) {
-      setFavorites(favorites.filter(fav => fav !== movie));
-    } else {
-      setFavorites([...favorites, movie]);
-    }
-  };
-
-  const movies = [
-    {id: 1, title: "Inception" },
-    {id: 2, title: "The Dark Knight" },
-    { id: 3, title: "Interstellar" },
-  ];
-
-  
   return (
-    <div>
-      <h1>My Favorites</h1>
-
-      {/* Movie list */}
-      <div>
-        {movies.map((movie) => (
-          <div key={movie.id}>
-            <h3>{movie.title}</h3>
-            <button onClick={() => toggleFavorite(movie.title)}>
-              {favorites.includes(movie.title) ? "Remove from Favorites" : "Add to Favorites"}
-            </button>
+    <div className="favorites-container">
+      <h2 className="favorites-title">Favorite Movies:</h2>
+      <div className="favorites-grid">
+        {favorites.map((fav) => (
+          <div key={fav.id} className="favorite-card">
+            <img src={fav.image} alt={fav.title} className="favorite-image" />
+            <div className="favorite-info">
+              <h4 className="favorite-title">Name: {fav.title}</h4>
+              <p className="favorite-genre">Genre: {fav.genre}</p>
+              <p className="favorite-rating">Rating: {fav.rating}</p>
+              <button onClick={() => toggleFavorite(fav)} className="remove-btn">
+                Remove From Favorites
+              </button>
+            </div>
+            
           </div>
         ))}
       </div>
-
-      {/* Displaying favorite movies */}
-      <h2>Favorite Movies:</h2>
-      <ul>
-        {favorites.map((fav, index) => (
-          <li key={index}>{fav}</li>
-        ))}
-      </ul>
     </div>
   );
 }

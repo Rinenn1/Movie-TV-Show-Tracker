@@ -1,37 +1,81 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import App from "./App"
-import './App.css'
+import { createContext, useState, useEffect } from "react";
+import { Outlet } from "react-router-dom";
+import Navbar from "./Navbar";
+import './App.css';
+
+export const AppContext = createContext();
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [movies, setMovies] = useState([]);
+  const [watchlist, setWatchlist] = useState([]);
+  const [favorites, setFavorites] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    fetch("http://localhost:3001/movies")
+      .then((res) => res.json())
+      .then((data) => setMovies(data));
+  }, []);
+
+  const addToWatchlist = (movie) => {
+    setWatchlist((prevWatchlist) => {
+      if (!prevWatchlist.some((m) => m.id === movie.id)) {
+        return [...prevWatchlist, movie];
+      }
+    });
+  };
+
+  const removeFromWatchlist = (id) => {
+    setWatchlist((prevWatchList) => prevWatchList.filter((movie) => movie.id !== id));
+  };
+
+  const updateMovieStatus = (id, statusType, value) => {
+    setMovies((prevMovies) =>
+      prevMovies.map((movie) =>
+        movie.id === id ? { ...movie, [statusType]: value } : movie
+      )
+    );
+  };
+
+  const toggleFavorite = (movie) => {
+    setFavorites((prevFavorites) => {
+      if (prevFavorites.some((fav) => fav.id === movie.id)) {
+        return prevFavorites.filter((fav) => fav.id !== movie.id);
+      } else {
+        return [...prevFavorites, movie];
+      }
+    });
+  };
+
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  // Filter movies based on the search query
+  const filteredMovies = movies.filter((movie) =>
+    movie.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <AppContext.Provider
+        value={{
+          movies: filteredMovies,
+          setMovies,
+          watchlist,
+          addToWatchlist,
+          removeFromWatchlist,
+          updateMovieStatus,
+          favorites,
+          setFavorites,
+          toggleFavorite,
+        }}
+      >
+        <Navbar onSearch={handleSearch} />
+        <Outlet />
+      </AppContext.Provider>
+    </div>
+  );
 }
 
-export default App
-
+export default App;

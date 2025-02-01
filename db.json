@@ -1,0 +1,59 @@
+{
+    "movies": [
+      {
+        "id": 1,
+        "title": "Inception",
+       "genre": "Sci-Fi",
+        "rating": "4.5 ⭐",
+        "image": "https://upload.wikimedia.org/wikipedia/en/1/18/Inception_OST.jpg",
+        "isFavorite": true,
+        "isInWatchlist": false
+      },
+      {
+        "id": 2,
+        "title": "The Dark Knight",
+        "genre": "Action",
+        "rating": "4.8 ⭐",
+        "image": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_FMjpg_UX1000_.jpg",
+        "isFavorite": false,
+        "isInWatchlist": true
+      },
+      {
+        "id": 3,
+        "title": "Interstellar",
+        "genre": "Sci-Fi",
+        "rating": "4.7 ⭐",
+        "image": "https://m.media-amazon.com/images/I/91vIHsL-zjL.jpg",
+        "isFavorite": true,
+        "isInWatchlist": false
+      },
+      {
+        "id": 4,
+        "title": "The Matrix",
+        "genre": "Sci-Fi",
+        "rating": "4.6 ⭐",
+        "image": "https://m.media-amazon.com/images/M/MV5BN2NmN2VhMTQtMDNiOS00NDlhLTliMjgtODE2ZTY0ODQyNDRhXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+        "isFavorite": false,
+        "isInWatchlist": true
+      },
+      {
+        "id": 5,
+        "title": "Gladiator",
+        "genre": "Drama",
+        "rating": "4.3 ⭐",
+        "image": "https://m.media-amazon.com/images/M/MV5BYWQ4YmNjYjEtOWE1Zi00Y2U4LWI4NTAtMTU0MjkxNWQ1ZmJiXkEyXkFqcGc@._V1_.jpg",
+        "isFavorite": true,
+        "isInWatchlist": false
+      },
+      {
+        "id": 6,
+        "title": "Titanic",
+        "genre": "Romance",
+        "rating": "4.4 ⭐",
+        "image": "https://m.media-amazon.com/images/I/81CVRAQi46L._AC_UF894,1000_QL80_.jpg",
+        "isFavorite": false,
+        "isInWatchlist": true
+      }
+    ]
+  }
+  
