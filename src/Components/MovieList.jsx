@@ -5,17 +5,34 @@ import './MovieList.css';
 
 function MovieList() {
 
-  const { movies, addToWatchlist, watchlist = [], favorites, toggleFavorite } = useContext(AppContext);
+  const { movies, addToWatchlist, watchlist, favorites, toggleFavorite, searchQuery, handleSearchChange } = useContext(AppContext);
+  
+  const filterMovies = movies.filter(movie => 
+    movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    movie.genre.toLowerCase().includes(searchQuery.toLowerCase())
+  );
   
   if (!movies.length) {
     return <p>Loading Movies...</p>;
   }
 
+  if (!filterMovies.length) {
+    return <p>No Movis Found!!</p>
+  }
+
   return (
     <div>
+      <div className="search-bar">
+        <FontAwesomeIcon icon={faSearch} />
+        <input 
+          type="text" 
+          placeholder="Search for movies..." 
+          onChange={handleSearchChange} 
+        />
+      </div>
       <h1>Movies</h1>
-      {movies.map((movie) => (
-        <div className="movies-display">
+      <div className="movies-display">
+        {filterMovies.map((movie) => (
           <div key={movie.id} className="movieDisplay">
             <img src={movie.image} className="image"/> 
             <h2>{movie.title}</h2>
@@ -27,15 +44,15 @@ function MovieList() {
             <button onClick={() => 
               watchlist.some((m) => m.id === movie.id)
               ? removeFromWatchlist(movie.id)
-                : addToWatchlist(movie)
-              } className="btn">
-                {watchlist.some((m) => m.id === movie.id) ? "In Watchlist" : "Add to Watchlist"}
+              : addToWatchlist(movie)
+            } className="btn">
+              {watchlist.some((m) => m.id === movie.id) ? "In Watchlist" : "Add to Watchlist"}
             </button>
-            <Link to={`/moviedetails/${movie.id}`}>View Details </Link>
+            <Link to={`/moviedetails/${movie.id}`} className="view-details-link">View Details </Link>
           </div>
-        </div>
-          
-      ))}
+        ))}
+      </div>
+        
     </div>
   );
 }
