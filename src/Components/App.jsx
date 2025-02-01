@@ -1,9 +1,7 @@
 import { createContext, useState, useEffect } from "react";
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
-import Hero from "./Hero";
+import './App.css';
 
 export const AppContext = createContext();
 
@@ -12,7 +10,6 @@ function App() {
   const [watchlist, setWatchlist] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-
 
   useEffect(() => {
     fetch("http://localhost:3001/movies")
@@ -29,9 +26,7 @@ function App() {
   };
 
   const removeFromWatchlist = (id) => {
-    setWatchlist((prevWatchList) => 
-      prevWatchList.filter((movie) => movie.id !== id)
-    );
+    setWatchlist((prevWatchList) => prevWatchList.filter((movie) => movie.id !== id));
   };
 
   const updateMovieStatus = (id, statusType, value) => {
@@ -45,26 +40,38 @@ function App() {
   const toggleFavorite = (movie) => {
     setFavorites((prevFavorites) => {
       if (prevFavorites.some((fav) => fav.id === movie.id)) {
-        return prevFavorites.filter((fav) => fav.id !== movie.id)
+        return prevFavorites.filter((fav) => fav.id !== movie.id);
       } else {
         return [...prevFavorites, movie];
       }
-    })
+    });
   };
 
   const handleSearch = (e) => {
-    setSearchQuery(searchQuery);
+    setSearchQuery(e.target.value);
   };
 
-// Filter movies based on the search query
-const filteredMovies = movies.filter((movie) =>
+  // Filter movies based on the search query
+  const filteredMovies = movies.filter((movie) =>
     movie.title.toLowerCase().includes(searchQuery.toLowerCase())
-);
+  );
 
   return (
     <div>
-      <AppContext.Provider value={{movies: filteredMovies, movies, setMovies, watchlist, addToWatchlist, removeFromWatchlist, updateMovieStatus, favorites, setFavorites, toggleFavorite}}>
-        <Navbar onSearch={handleSearch}/>
+      <AppContext.Provider
+        value={{
+          movies: filteredMovies,
+          setMovies,
+          watchlist,
+          addToWatchlist,
+          removeFromWatchlist,
+          updateMovieStatus,
+          favorites,
+          setFavorites,
+          toggleFavorite,
+        }}
+      >
+        <Navbar onSearch={handleSearch} />
         <Outlet />
       </AppContext.Provider>
     </div>
